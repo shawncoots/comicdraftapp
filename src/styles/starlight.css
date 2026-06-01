@@ -52,11 +52,3 @@
   --sl-color-text-accent: #0A84FF;
 }
 
-/* "User Guide" group: non-collapsible, render as a static header */
-#starlight__sidebar details > summary {
-  pointer-events: none;
-  cursor: default;
-}
-#starlight__sidebar details > summary .caret {
-  display: none;
-}

@@ -1,54 +1,71 @@
 ---
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
-import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 
 const { sidebar, headings } = Astro.locals.starlightRoute;
-const pageHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const h2Headings = headings.filter((h) => h.depth === 2);
 ---
 
 <SidebarPersister>
-  <SidebarSublist sublist={sidebar} />
+  {sidebar.map((entry) =>
+    entry.type === 'group' && (
+      <div class="nav-group">
+        <p class="nav-group-label">{entry.label}</p>
+        <ul class="nav-list">
+          {entry.entries.map((item) =>
+            item.type === 'link' && (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.isCurrent ? 'page' : undefined}
+                  class="nav-link"
+                >
+                  {item.label}
+                </a>
+                {item.isCurrent && h2Headings.length > 0 && (
+                  <ul class="nav-sublist">
+                    {h2Headings.map((h) => (
+                      <li>
+                        <a href={`#${h.slug}`} class="nav-sublink">{h.text}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            )
+          )}
+        </ul>
+      </div>
+    )
+  )}
 </SidebarPersister>
-
-{pageHeadings.length > 0 && (
-  <nav class="page-toc" aria-label="On this page">
-    <p class="toc-label">On this page</p>
-    <ul class="toc-list">
-      {pageHeadings.map((h) => (
-        <li class:list={[{ 'toc-h3': h.depth === 3 }]}>
-          <a href={`#${h.slug}`}>{h.text}</a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-)}
 
 <div class="md:sl-hidden">
   <MobileMenuFooter />
 </div>
 
 <style>
-  .page-toc {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--sl-color-hairline-light);
+  .nav-group {
+    margin-bottom: 1rem;
   }
-  .toc-label {
+  .nav-group-label {
     font-size: var(--sl-text-xs);
     font-weight: 600;
     color: var(--sl-color-white);
-    text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0 0.5rem;
+    text-transform: uppercase;
+    padding: 0.2em 0.5rem;
     margin: 0 0 0.5rem;
   }
-  .toc-list {
+  .nav-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  .toc-list li a {
+  .nav-list > li + li {
+    margin-top: 0.25rem;
+  }
+  .nav-link {
     display: block;
     border-radius: 0.25rem;
     text-decoration: none;
@@ -58,15 +75,37 @@ const pageHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
     line-height: 1.4;
     overflow-wrap: anywhere;
   }
-  .toc-list li a:hover {
+  .nav-link:hover,
+  .nav-link:focus {
     color: var(--sl-color-white);
   }
-  .toc-list li.toc-h3 {
-    margin-inline-start: 0.5rem;
+  .nav-link[aria-current='page'] {
+    font-weight: 600;
+    color: var(--sl-color-text-invert);
+    background-color: var(--sl-color-text-accent);
+  }
+  .nav-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 0.25rem 0.5rem;
     border-inline-start: 1px solid var(--sl-color-hairline-light);
     padding-inline-start: 0.5rem;
   }
-  .toc-list li.toc-h3 a {
+  .nav-sublist li + li {
+    margin-top: 0.125rem;
+  }
+  .nav-sublink {
+    display: block;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: var(--sl-color-gray-3);
+    padding: 0.2em 0.5rem;
     font-size: var(--sl-text-xs);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .nav-sublink:hover,
+  .nav-sublink:focus {
+    color: var(--sl-color-white);
   }
 </style>
