@@ -1,0 +1,72 @@
+---
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+
+const { sidebar, headings } = Astro.locals.starlightRoute;
+const pageHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+<SidebarPersister>
+  <SidebarSublist sublist={sidebar} />
+</SidebarPersister>
+
+{pageHeadings.length > 0 && (
+  <nav class="page-toc" aria-label="On this page">
+    <p class="toc-label">On this page</p>
+    <ul class="toc-list">
+      {pageHeadings.map((h) => (
+        <li class:list={[{ 'toc-h3': h.depth === 3 }]}>
+          <a href={`#${h.slug}`}>{h.text}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
+
+<style>
+  .page-toc {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline-light);
+  }
+  .toc-label {
+    font-size: var(--sl-text-xs);
+    font-weight: 600;
+    color: var(--sl-color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0 0.5rem;
+    margin: 0 0 0.5rem;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .toc-list li a {
+    display: block;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: var(--sl-color-gray-2);
+    padding: 0.3em 0.5rem;
+    font-size: var(--sl-text-sm);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .toc-list li a:hover {
+    color: var(--sl-color-white);
+  }
+  .toc-list li.toc-h3 {
+    margin-inline-start: 0.5rem;
+    border-inline-start: 1px solid var(--sl-color-hairline-light);
+    padding-inline-start: 0.5rem;
+  }
+  .toc-list li.toc-h3 a {
+    font-size: var(--sl-text-xs);
+  }
+</style>

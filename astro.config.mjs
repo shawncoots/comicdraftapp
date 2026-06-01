@@ -8,6 +8,9 @@ export default defineConfig({
 			title: 'Comic Draft',
 			social: [],
 			tableOfContents: false,
+			components: {
+				Sidebar: './src/components/Sidebar.astro',
+			},
 			customCss: [
 				'./src/styles/tokens.css',
 				'./src/styles/starlight.css',
