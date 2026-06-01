@@ -7,15 +7,26 @@ export default defineConfig({
 		starlight({
 			title: 'Comic Draft',
 			social: [],
+			tableOfContents: false,
 			customCss: [
 				'./src/styles/tokens.css',
 				'./src/styles/starlight.css',
 			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'User Guide',
 					items: [
-						{ label: 'User Guide', slug: 'guides/user-guide' },
+						{ label: 'The Library', slug: 'guides/library' },
+						{ label: 'Writing a Script', slug: 'guides/writing-a-script' },
+						{ label: 'Inline Formatting', slug: 'guides/inline-formatting' },
+						{ label: 'Characters & Cast', slug: 'guides/characters' },
+						{ label: 'Outline (Beats)', slug: 'guides/outline' },
+						{ label: 'Notes', slug: 'guides/notes' },
+						{ label: 'Settings', slug: 'guides/settings' },
+						{ label: 'Preview & Export', slug: 'guides/preview-export' },
+						{ label: 'Keyboard Shortcuts', slug: 'guides/keyboard-shortcuts' },
+						{ label: 'Tips & Conventions', slug: 'guides/tips' },
+						{ label: 'Cross-Platform Notes', slug: 'guides/cross-platform' },
 					],
 				},
 			],
