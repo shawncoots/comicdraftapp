@@ -1,0 +1,61 @@
+/* ComicDraft theme overrides for Starlight */
+
+:root {
+  --sl-font: 'SF Mono', 'Courier New', Courier, monospace;
+  --sl-font-mono: 'SF Mono', 'Courier New', Courier, monospace;
+}
+
+:root[data-theme='light'],
+:root:not([data-theme='dark']) {
+  --sl-color-accent-low:  #EBF4FF;
+  --sl-color-accent:      #0A84FF;
+  --sl-color-accent-high: #0058B8;
+
+  --sl-color-white: #1C1C1E;
+  --sl-color-gray-1: #1C1C1E;
+  --sl-color-gray-2: #3F3F46;
+  --sl-color-gray-3: #52525B;
+  --sl-color-gray-4: #6E6E73;
+  --sl-color-gray-5: #B0B7C3;
+  --sl-color-gray-6: #E0E3E8;
+  --sl-color-gray-7: #F0F2F5;
+  --sl-color-black:  #F0F2F5;
+
+  --sl-color-bg:         #F0F2F5;
+  --sl-color-bg-nav:     #E8EAED;
+  --sl-color-bg-sidebar: #E8EAED;
+  --sl-color-hairline:   #D1D5DB;
+  --sl-color-text:       #1C1C1E;
+  --sl-color-text-accent: #0A84FF;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent-low:  #0A2540;
+  --sl-color-accent:      #0A84FF;
+  --sl-color-accent-high: #60A9FB;
+
+  --sl-color-white: #F5F5F7;
+  --sl-color-gray-1: #F5F5F7;
+  --sl-color-gray-2: #D1D5DB;
+  --sl-color-gray-3: #B0B7C3;
+  --sl-color-gray-4: #8A929F;
+  --sl-color-gray-5: #52525B;
+  --sl-color-gray-6: #3A3A3C;
+  --sl-color-gray-7: #2C2C2E;
+  --sl-color-black:  #1C1C1E;
+
+  --sl-color-bg:         #1C1C1E;
+  --sl-color-bg-nav:     #2C2C2E;
+  --sl-color-bg-sidebar: #2C2C2E;
+  --sl-color-hairline:   #3A3A3C;
+  --sl-color-text:       #F5F5F7;
+  --sl-color-text-accent: #0A84FF;
+}
+
+/* Sidebar label style */
+.sidebar-content .group-label span {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
