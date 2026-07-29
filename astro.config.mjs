@@ -3,6 +3,9 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
+	// Custom domain served by GitHub Pages. Because this is an apex domain
+	// there is no `base` path — internal links like /contact resolve as-is.
+	site: 'https://comicdraft.app',
 	integrations: [
 		starlight({
 			title: 'Comic Draft',
