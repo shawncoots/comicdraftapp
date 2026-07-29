@@ -49,12 +49,3 @@ description: Complete keyboard shortcut reference for all ComicDraft features.
 | ⌘7 | SFX |
 | ⌘8 | Splash |
 | ⌘9 | Note |
-
-## Element seeds (alternative)
-
-| Type then press | Result |
-|-----------------|--------|
-| `P` + Enter | PAGE |
-| `p` + Enter | PANEL |
-| `Caption` + accept autocomplete | CAPTION (…) |
-| `SFX` + accept autocomplete | SFX: |

@@ -24,18 +24,9 @@ A comic script is made of a handful of recurring elements. ComicDraft recognizes
 
 ## Inserting elements
 
-You have three equally valid ways to insert any element. Pick whichever feels most natural — they all produce the same result.
+You have two equally valid ways to insert any element. Pick whichever feels most natural — they both produce the same result.
 
-### 1. Type the seed
-
-Type the first character or word of the element and press **Enter**. ComicDraft expands it.
-
-- `P` then Enter → `PAGE-ONE`
-- `p` then Enter → `PANEL 1`
-
-After a character heading like `BATMAN:`, hitting Enter automatically drops you into a dialog-indented continuation line.
-
-### 2. Press a keyboard shortcut
+### 1. Press a keyboard shortcut
 
 Each element has a dedicated `⌘ + number` shortcut. The cursor lands in the right place to start typing immediately.
 
@@ -51,7 +42,7 @@ Each element has a dedicated `⌘ + number` shortcut. The cursor lands in the ri
 | ⌘8 | Splash | Two adjacent `PAGE` lines that auto-collapse to a splash spread |
 | ⌘9 | Note | `NOTE: ` with cursor after the space for inline note text |
 
-### 3. Tap the Format Bar
+### 2. Tap the Format Bar
 
 A horizontal **Format Bar** sits at the bottom of the editor with the same nine labels as buttons. Click or tap any label to insert the element at your cursor.
 
