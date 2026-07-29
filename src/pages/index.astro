@@ -6,8 +6,8 @@ import '../styles/tokens.css';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Comic Draft — the focused comic script writing app for macOS and iOS." />
-  <title>Comic Draft — Write Comics. Not Formatting.</title>
+  <meta name="description" content="Comic Draft — the focused comic script writing app for macOS and iPadOS." />
+  <title>Comic Draft — Write comics. Just comics.</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body>
@@ -16,20 +16,18 @@ import '../styles/tokens.css';
     <span class="nav-wordmark">Comic Draft</span>
     <div class="nav-links">
       <a href="/guides/library">Docs</a>
-      <a href="#">Contact</a>
+      <a href="/contact">Contact</a>
     </div>
   </nav>
 
   <section class="hero">
-    <p class="hero-eyebrow">For macOS &amp; iOS</p>
-    <h1 class="hero-headline">Write Comics.<br />Not Formatting.</h1>
+    <p class="hero-eyebrow">For Mac &amp; iPad</p>
+    <h1 class="hero-headline">Write Comics.<br />Just Comics.</h1>
     <p class="hero-tagline">
-      Comic Draft is a focused script editor built for comic writers.
-      Type your story — pages, panels, dialog, captions, sound effects —
-      and the app handles structure, numbering, and layout in the background.
+      Comic Draft is a focused script editor built specifically for comic authors. Never battle templates designed for other mediums again.
     </p>
     <div class="hero-actions">
-      <a href="/guides/library" class="btn btn-primary">Read the Docs</a>
+      <a href="/guides/library" class="btn btn-primary">Learn how the app works</a>
       <a href="#" class="btn btn-ghost">Download on the App Store</a>
     </div>
   </section>
@@ -41,7 +39,7 @@ import '../styles/tokens.css';
         <h3 class="feature-title">Elements as you type</h3>
         <p class="feature-body">
           PAGE, PANEL, CHARACTER, DIALOG, CAPTION, SFX — each element is
-          recognized and formatted on the fly. No toolbars. No menus. Just writing.
+          recognized and formatted on the fly. No toolbars. No menus. Just writing. Keyboard shortcuts also format exactly what you need.
         </p>
       </div>
       <div class="feature-card">
@@ -49,7 +47,7 @@ import '../styles/tokens.css';
         <h3 class="feature-title">Auto-numbered, always</h3>
         <p class="feature-body">
           Pages and panels renumber themselves as you add, remove, or reorder
-          them. Your script stays consistent without any manual work.
+          them. Your script stays consistent without any manual work. Never manually type a page or panel number again.
         </p>
       </div>
       <div class="feature-card">
@@ -67,30 +65,56 @@ import '../styles/tokens.css';
     <div class="screenshots-grid">
       <figure class="screenshot-figure">
         <img
-          src="/screenshots/OutlineTray.png"
-          alt="Comic Draft outline inspector panel showing series structure"
+          src="/screenshots/editor-library.png"
+          alt="Comic Draft editor with the series library on the left, a formatted comic script in the centre, and the issue details inspector on the right"
           class="screenshot-img"
+          width="1800"
+          height="1170"
           loading="lazy"
         />
-        <figcaption>Outline, Characters, and Notes — all in the inspector.</figcaption>
+        <figcaption>Series, arcs, and issues on the left. Your script in the middle. Issue details on the right.</figcaption>
       </figure>
       <figure class="screenshot-figure">
         <img
-          src="/screenshots/PreviewScreen.png"
-          alt="Comic Draft script preview mode showing formatted page cards"
+          src="/screenshots/format-preview.png"
+          alt="Comic Draft format preview showing a script rendered in Courier with font, layout, and dialog controls in the side panel"
           class="screenshot-img"
+          width="1800"
+          height="1170"
           loading="lazy"
         />
-        <figcaption>Preview mode shows your script as formatted page cards.</figcaption>
+        <figcaption>Format preview — switch font, layout, and dialog casing and watch the page update live.</figcaption>
+      </figure>
+      <figure class="screenshot-figure">
+        <img
+          src="/screenshots/outline-dark.png"
+          alt="Comic Draft in dark mode with the outline inspector open, showing four story beats each marked with a draft status"
+          class="screenshot-img"
+          width="1800"
+          height="1170"
+          loading="lazy"
+        />
+        <figcaption>Track your beats in the outline inspector. Dark mode included.</figcaption>
+      </figure>
+      <figure class="screenshot-figure">
+        <img
+          src="/screenshots/export-options.png"
+          alt="Comic Draft export dialog offering PDF, Word, and plain text formats alongside font, layout, and header options"
+          class="screenshot-img"
+          width="1800"
+          height="1170"
+          loading="lazy"
+        />
+        <figcaption>Export to PDF, Word, or plain text — with the formatting your editor expects.</figcaption>
       </figure>
     </div>
   </section>
 
   <footer class="footer">
-    <span class="footer-copy">Comic Draft &copy; 2026</span>
+    <span class="footer-copy">&copy; 2026 <a href="https://anti-villain.com">ANTI-VILLAIN</a></span>
     <nav class="footer-links">
-      <a href="/guides/library">Docs</a>
-      <a href="#">Contact</a>
+      <a href="/guides/library">Guide</a>
+      <a href="/contact">Contact</a>
     </nav>
   </footer>
 
@@ -139,7 +163,7 @@ import '../styles/tokens.css';
     text-decoration: none;
     transition: color 0.15s ease;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-text); }
 
   /* ── Hero ── */
   .hero {
@@ -151,7 +175,7 @@ import '../styles/tokens.css';
   .hero-eyebrow {
     font-size: var(--text-xs);
     font-weight: var(--weight-medium);
-    color: var(--accent);
+    color: var(--accent-text);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
     margin-bottom: var(--space-4);
@@ -228,7 +252,7 @@ import '../styles/tokens.css';
   .feature-label {
     font-size: var(--text-xs);
     font-weight: var(--weight-medium);
-    color: var(--accent);
+    color: var(--accent-text);
     letter-spacing: var(--tracking-widest);
     text-transform: uppercase;
     margin-bottom: var(--space-2);
@@ -252,14 +276,16 @@ import '../styles/tokens.css';
   }
   .screenshots-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-8);
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .screenshot-figure { margin: 0; }
   .screenshot-img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 1800 / 1170;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-lg);
@@ -267,7 +293,7 @@ import '../styles/tokens.css';
   }
   .screenshot-figure figcaption {
     font-size: var(--text-xs);
-    color: var(--text-tertiary);
+    color: var(--text-muted);
     margin-top: var(--space-2);
     text-align: center;
     letter-spacing: var(--tracking-wide);
@@ -284,7 +310,7 @@ import '../styles/tokens.css';
   }
   .footer-copy {
     font-size: var(--text-xs);
-    color: var(--text-tertiary);
+    color: var(--text-muted);
   }
   .footer-links {
     display: flex;
@@ -292,13 +318,16 @@ import '../styles/tokens.css';
   }
   .footer-links a {
     font-size: var(--text-xs);
-    color: var(--text-tertiary);
+    color: var(--text-muted);
     text-decoration: none;
     transition: color 0.15s ease;
   }
-  .footer-links a:hover { color: var(--accent); }
+  .footer-links a:hover { color: var(--accent-text); }
 
   /* ── Responsive ── */
+  @media (max-width: 860px) {
+    .screenshots-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 600px) {
     .nav { padding: var(--space-3) var(--space-4); }
     .hero { padding: var(--space-10) var(--space-4); }

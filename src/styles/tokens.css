@@ -52,11 +52,16 @@
   --text-tertiary:    var(--grey-300);
   --text-placeholder: var(--grey-400);
   --text-on-accent:   var(--grey-0);
+  /* De-emphasised text that still has to be read (captions, footers).
+     --text-tertiary is a UI-chrome tint and fails WCAG AA below 18px. */
+  --text-muted:       var(--grey-600);
 
   /* Interactive */
   --accent:         var(--blue-500);
   --accent-hover:   var(--blue-600);
   --accent-pressed: var(--blue-700);
+  /* --accent is only AA-compliant at 18px+; use this for small accent text. */
+  --accent-text:    var(--blue-700);
   --accent-subtle:  var(--blue-50);
   --selection-bg:   var(--blue-500);
   --selection-text: var(--grey-0);

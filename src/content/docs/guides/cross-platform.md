@@ -20,4 +20,4 @@ Files created on one platform open transparently on the other.
 
 ---
 
-That's the whole writing surface. Open an issue, type `P`, hit Enter, and you're in business.
+That's the whole writing surface. Please reach out to us via the [contact form](/contact) if you have any questions.
