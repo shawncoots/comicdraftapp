@@ -1,0 +1,46 @@
+---
+// Footer for the standalone marketing pages.
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <span class="footer-copy">&copy; {year} <a href="https://anti-villain.com">ANTI-VILLAIN</a></span>
+  <nav class="footer-links">
+    <a href="/guides/library">Guide</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-5) var(--space-8);
+    border-top: 1px solid var(--border);
+    background: var(--surface-sidebar);
+  }
+  .footer-copy {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .footer-links {
+    display: flex;
+    gap: var(--space-6);
+  }
+  .footer-links a {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .footer-links a:hover { color: var(--accent-text); }
+
+  @media (max-width: 600px) {
+    .footer {
+      padding: var(--space-4);
+      flex-direction: column;
+      gap: var(--space-2);
+      text-align: center;
+    }
+  }
+</style>

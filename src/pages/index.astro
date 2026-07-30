@@ -1,5 +1,8 @@
 ---
 import '../styles/tokens.css';
+import '../styles/site.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -12,13 +15,7 @@ import '../styles/tokens.css';
 </head>
 <body>
 
-  <nav class="nav">
-    <span class="nav-wordmark">Comic Draft</span>
-    <div class="nav-links">
-      <a href="/guides/library">Docs</a>
-      <a href="/contact">Contact</a>
-    </div>
-  </nav>
+  <SiteNav />
 
   <section class="hero">
     <p class="hero-eyebrow">For Mac &amp; iPad</p>
@@ -110,61 +107,12 @@ import '../styles/tokens.css';
     </div>
   </section>
 
-  <footer class="footer">
-    <span class="footer-copy">&copy; 2026 <a href="https://anti-villain.com">ANTI-VILLAIN</a></span>
-    <nav class="footer-links">
-      <a href="/guides/library">Guide</a>
-      <a href="/contact">Contact</a>
-    </nav>
-  </footer>
+  <SiteFooter />
 
 </body>
 </html>
 
 <style>
-  /* ── Reset ── */
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--surface-app);
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3, p, figure { margin: 0; }
-  a { color: inherit; }
-
-  /* ── Nav ── */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-3) var(--space-8);
-    background: var(--surface-app);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-wordmark {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-bold);
-    color: var(--text-primary);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-  }
-  .nav-links {
-    display: flex;
-    gap: var(--space-6);
-  }
-  .nav-links a {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-  .nav-links a:hover { color: var(--accent-text); }
-
   /* ── Hero ── */
   .hero {
     max-width: 680px;
@@ -199,33 +147,6 @@ import '../styles/tokens.css';
     gap: var(--space-3);
     justify-content: center;
     flex-wrap: wrap;
-  }
-
-  /* ── Buttons ── */
-  .btn {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    font-weight: var(--weight-bold);
-    padding: var(--space-3) var(--space-5);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: var(--text-on-accent);
-  }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-secondary);
-    border-color: var(--border);
-  }
-  .btn-ghost:hover {
-    color: var(--text-primary);
-    border-color: var(--text-secondary);
   }
 
   /* ── Features ── */
@@ -299,41 +220,14 @@ import '../styles/tokens.css';
     letter-spacing: var(--tracking-wide);
   }
 
-  /* ── Footer ── */
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-5) var(--space-8);
-    border-top: 1px solid var(--border);
-    background: var(--surface-sidebar);
-  }
-  .footer-copy {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-  }
-  .footer-links {
-    display: flex;
-    gap: var(--space-6);
-  }
-  .footer-links a {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-  .footer-links a:hover { color: var(--accent-text); }
-
   /* ── Responsive ── */
   @media (max-width: 860px) {
     .screenshots-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .nav { padding: var(--space-3) var(--space-4); }
     .hero { padding: var(--space-10) var(--space-4); }
     .hero-headline { font-size: var(--text-2xl); }
     .features { padding: var(--space-10) var(--space-4); }
     .screenshots { padding: var(--space-10) var(--space-4); }
-    .footer { padding: var(--space-4); flex-direction: column; gap: var(--space-2); text-align: center; }
   }
 </style>
