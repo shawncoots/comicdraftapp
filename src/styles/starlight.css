@@ -52,3 +52,11 @@
   --sl-color-text-accent: #0A84FF;
 }
 
+
+/* ── App icon in the docs header ── */
+/* Matches the treatment on the standalone marketing pages: the source
+   asset is a full-bleed square, so the corner rounding comes from CSS. */
+.site-title img {
+  border-radius: 22.5%;
+  box-shadow: var(--shadow-sm);
+}

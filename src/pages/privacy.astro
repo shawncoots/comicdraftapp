@@ -1,0 +1,183 @@
+---
+import '../styles/tokens.css';
+import '../styles/site.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const CONTACT_EMAIL = 'shawn@anti-villain.com';
+const LAST_UPDATED = 'July 30, 2026';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Comic Draft privacy policy — no accounts, no analytics SDKs, no third-party tracking. Your scripts stay in your own iCloud." />
+  <title>Comic Draft — Privacy Policy</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+<body>
+
+  <SiteNav />
+
+  <section class="page-head">
+    <p class="eyebrow">Legal</p>
+    <h1 class="headline">Privacy Policy</h1>
+    <p class="tagline">
+      Comic Draft is built to keep your work private. We do not collect, sell,
+      or share your personal data.
+    </p>
+    <p class="updated">Last updated: {LAST_UPDATED}</p>
+  </section>
+
+  <section class="prose-wrap">
+    <article class="prose">
+
+      <h2>What we collect</h2>
+      <p>
+        Comic Draft has no accounts, no logins, no analytics SDKs, and no
+        third-party tracking. We do not collect your personal data. The only
+        information that ever reaches us is anonymous, opt-in crash diagnostics
+        delivered by Apple — described under <a href="#diagnostics">Diagnostics</a> below.
+      </p>
+
+      <h2>Where your work lives</h2>
+      <p>
+        Your scripts and your library — series, issues, characters, outlines,
+        and notes — are stored on your device and synced through your own
+        iCloud account using Apple iCloud Drive and CloudKit. This data lives
+        in your private iCloud. It is never sent to us, and never sent to any
+        third party. Apple's handling of iCloud data is governed by
+        <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple's Privacy Policy</a>.
+      </p>
+
+      <h2 id="diagnostics">Diagnostics</h2>
+      <p>
+        If Comic Draft crashes or misbehaves, Apple may share a crash report
+        and basic performance diagnostics with us through App Store Connect —
+        but only if you have opted in to sharing analytics with app developers
+        on your device.
+      </p>
+      <p>
+        These reports reach us from Apple in aggregated form. They contain
+        technical details such as the app version, device model, OS version,
+        and the point in the code where the crash occurred. They do not contain
+        your scripts, your library, or anything that identifies you personally.
+        We use them for one thing: fixing bugs.
+      </p>
+      <p>
+        You can turn this off at any time — on iPad under
+        <span class="path">Settings → Privacy &amp; Security → Analytics &amp; Improvements</span>,
+        and on Mac under
+        <span class="path">System Settings → Privacy &amp; Security → Analytics &amp; Improvements</span>.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p>
+        Comic Draft does not knowingly collect personal information from
+        anyone, including children.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        We may update this policy. Material changes will be posted on this page
+        with a new "last updated" date.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy? Email
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, or use the
+        <a href="/contact">contact form</a>.
+      </p>
+
+    </article>
+  </section>
+
+  <SiteFooter />
+
+</body>
+</html>
+
+<style>
+  /* ── Page head ── */
+  .page-head {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--space-16) var(--space-8) var(--space-8);
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--accent-text);
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .headline {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-6);
+    letter-spacing: var(--tracking-tight);
+  }
+  .tagline {
+    font-size: var(--text-md);
+    color: var(--text-secondary);
+    line-height: var(--leading-loose);
+  }
+  .updated {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-wide);
+    margin-top: var(--space-4);
+  }
+
+  /* ── Prose ── */
+  .prose-wrap {
+    padding: 0 var(--space-8) var(--space-16);
+  }
+  .prose {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-8);
+  }
+  .prose h2 {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .prose h2 + p { margin-top: 0; }
+  .prose h2:not(:first-child) { margin-top: var(--space-8); }
+  .prose p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-loose);
+  }
+  .prose p + p { margin-top: var(--space-4); }
+  .prose a { color: var(--accent-text); }
+  .path {
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page-head { padding: var(--space-10) var(--space-4) var(--space-6); }
+    .headline { font-size: var(--text-2xl); }
+    .prose-wrap { padding: 0 var(--space-4) var(--space-10); }
+    .prose { padding: var(--space-6); }
+    .path { white-space: normal; }
+  }
+</style>

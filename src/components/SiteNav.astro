@@ -1,10 +1,16 @@
 ---
 // Sticky top nav for the standalone marketing pages.
 // Marks the active link from the current URL so callers don't pass a prop.
+import { Image } from 'astro:assets';
+import appIcon from '../assets/appicon.png';
+
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
 <nav class="nav">
-  <a href="/" class="nav-wordmark">Comic Draft</a>
+  <a href="/" class="nav-wordmark">
+    <Image src={appIcon} alt="" width={24} height={24} densities={[1, 2]} class="nav-icon" />
+    <span>Comic Draft</span>
+  </a>
   <div class="nav-links">
     <a href="/guides/library">Guide</a>
     <a href="/contact" aria-current={path === '/contact' ? 'page' : undefined}>Contact</a>
@@ -24,12 +30,24 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
     border-bottom: 1px solid var(--border);
   }
   .nav-wordmark {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
     font-size: var(--text-sm);
     font-weight: var(--weight-bold);
     color: var(--text-primary);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
     text-decoration: none;
+  }
+  /* The source icon is a full-bleed square, so the app-icon corner
+     rounding has to come from CSS rather than the asset itself. */
+  .nav-wordmark :global(.nav-icon) {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 22.5%;
+    box-shadow: var(--shadow-sm);
   }
   .nav-links {
     display: flex;

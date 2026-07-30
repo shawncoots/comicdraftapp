@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import '../styles/tokens.css';
 import '../styles/site.css';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import appIcon from '../assets/appicon.png';
 ---
 <!doctype html>
 <html lang="en">
@@ -11,13 +13,23 @@ import SiteFooter from '../components/SiteFooter.astro';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Comic Draft — the focused comic script writing app for macOS and iPadOS." />
   <title>Comic Draft — Write comics. Just comics.</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </head>
 <body>
 
   <SiteNav />
 
   <section class="hero">
+    <Image
+      src={appIcon}
+      alt="Comic Draft app icon"
+      width={112}
+      height={112}
+      densities={[1, 2]}
+      loading="eager"
+      class="hero-icon"
+    />
     <p class="hero-eyebrow">For Mac &amp; iPad</p>
     <h1 class="hero-headline">Write Comics.<br />Just Comics.</h1>
     <p class="hero-tagline">
@@ -119,6 +131,16 @@ import SiteFooter from '../components/SiteFooter.astro';
     margin: 0 auto;
     padding: var(--space-16) var(--space-8);
     text-align: center;
+  }
+  /* The source icon is a full-bleed square, so the app-icon corner
+     rounding has to come from CSS rather than the asset itself. */
+  .hero-icon {
+    display: block;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto var(--space-6);
+    border-radius: 22.5%;
+    box-shadow: var(--shadow-lg);
   }
   .hero-eyebrow {
     font-size: var(--text-xs);
@@ -226,6 +248,11 @@ import SiteFooter from '../components/SiteFooter.astro';
   }
   @media (max-width: 600px) {
     .hero { padding: var(--space-10) var(--space-4); }
+    .hero-icon {
+      width: 88px;
+      height: 88px;
+      margin-bottom: var(--space-5);
+    }
     .hero-headline { font-size: var(--text-2xl); }
     .features { padding: var(--space-10) var(--space-4); }
     .screenshots { padding: var(--space-10) var(--space-4); }

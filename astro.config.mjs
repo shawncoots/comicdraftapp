@@ -9,6 +9,19 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Comic Draft',
+			// Starlight serves the logo as-is rather than running it through
+			// Astro's image pipeline, so point it at a pre-sized 96px webp
+			// instead of the full-resolution icon used by the marketing hero.
+			logo: {
+				src: './src/assets/appicon-nav.webp',
+			},
+			favicon: '/favicon-32.png',
+			head: [
+				{
+					tag: 'link',
+					attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+				},
+			],
 			social: [],
 			tableOfContents: false,
 			components: {
