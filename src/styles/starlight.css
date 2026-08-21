@@ -53,10 +53,26 @@
 }
 
 
-/* ── App icon in the docs header ── */
-/* Matches the treatment on the standalone marketing pages: the source
-   asset is a full-bleed square, so the corner rounding comes from CSS. */
+/* ── Wordmark in the docs header ── */
+/* Starlight's SiteTitle ships its own type scale and accent colour, which
+   made the docs header diverge from the marketing pages. These rules mirror
+   .nav-wordmark in SiteNav.astro. Starlight's own styles sit in
+   @layer starlight.core, so unlayered declarations win without !important.
+   Colour uses --sl-color-white rather than --text-primary so the wordmark
+   stays legible against the dark nav. */
+.site-title {
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--sl-color-white);
+}
+/* The source icon is a full-bleed square, so the app-icon corner
+   rounding has to come from CSS rather than the asset itself. */
 .site-title img {
+  height: 24px;
+  width: 24px;
   border-radius: 22.5%;
   box-shadow: var(--shadow-sm);
 }
