@@ -41,6 +41,7 @@ export default defineConfig({
 						{ label: 'Characters & Cast', slug: 'guides/characters' },
 						{ label: 'Outline (Beats)', slug: 'guides/outline' },
 						{ label: 'Notes', slug: 'guides/notes' },
+						{ label: 'Working with Files', slug: 'guides/files' },
 						{ label: 'Settings', slug: 'guides/settings' },
 						{ label: 'Preview & Export', slug: 'guides/preview-export' },
 						{ label: 'Keyboard Shortcuts', slug: 'guides/keyboard-shortcuts' },

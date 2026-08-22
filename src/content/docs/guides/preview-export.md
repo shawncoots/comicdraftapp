@@ -19,7 +19,13 @@ The export menu has three formats:
 
 Hit **⇧⌘E** or the export button (⬆ icon in the toolbar) to bring up the **Export Sheet**. Choose your format, configure the options (whether to include Notes, panel description layout, font), and click **Export**.
 
-On macOS, an NSSavePanel opens — pick where to save. On iPad, the file is written to a temp directory and you get a Share Sheet to send it via Mail, Files, AirDrop, etc.
+On macOS, a save panel opens — pick where to save. On iPad, the file is written to a temp directory and you get a Share Sheet to send it via Mail, Files, AirDrop, etc.
+
+Documents opened from outside the Library export exactly like Library issues, cover page included.
+
+:::note[Whose name is on the cover?]
+The cover page uses the author and contact stored **in the document** when it has them, falling back to your own [Settings](/guides/settings/) when it doesn't. Exporting a collaborator's script credits them, not you. A graphic novel prints its title once — it has no separate series line to repeat it on.
+:::
 
 ## Drafts
 

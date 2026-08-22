@@ -127,3 +127,18 @@ NOTE: Revised after Issue #3 retcon — Bruce's father uses the cane in this sce
 ```
 
 Notes are italicized and muted in the editor. They're excluded from PDF/DOCX/TXT exports by default.
+
+## Off-page sections
+
+For anything longer than a one-line `NOTE:` — a synopsis, a pitch, a running list of continuity you keep checking — start a line with `#` or `##`:
+
+```
+# Continuity
+
+Bruce's father uses the cane in every flashback from Issue #3 on.
+Gordon does not know about the cave yet.
+```
+
+Everything from that heading onward is off-page: styled as a heading and body text, never counted as script content, and never exported. The section closes at the next page header, panel header, or a `---` separator on its own line — so you can drop one between scenes and pick the script straight back up.
+
+Character-looking lines inside an off-page section stay off-page. Writing `BATMAN:` in a note doesn't add Batman to your cast.

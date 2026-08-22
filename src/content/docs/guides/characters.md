@@ -25,15 +25,17 @@ This keeps the recurring cast in one place and lets each issue add guest stars w
 
 Type the first letter of a known character on a fresh line, and a small popover appears with matching names. Press ↓/↑ to move through the list, Return or Tab to accept. ComicDraft inserts `NAME:` and drops you into the dialog block.
 
-The autocomplete also surfaces **Caption** and **SFX** as suggestions if you type `C` or `S` — useful for inline caption/SFX without using the keyboard shortcut.
-
 :::tip[Caption with a character]
-Typing `Caption` and pressing Return inserts `CAPTION (` and offers the character autocomplete again. Pick a name, press Return, and ComicDraft finishes as `CAPTION (NAME):` with a dialog line below.
+Press ⌘6 (or type `CAPTION (` yourself) and the character autocomplete offers your cast for the name inside the parens. Pick one, press Return, and ComicDraft finishes it as `CAPTION (NAME):` with a dialog line below.
 :::
+
+Autocomplete works in documents you've opened from outside the Library too — the cast travels inside the `.comicdraft` file, so a collaborator's characters are already there.
 
 ## How character names are stored
 
 All character lines in a script are auto-uppercased by the engine (you can type `batman:` or `Batman:` — both become `BATMAN:`). Annotations like `(V.O.)`, `[off]`, `(CONT)` are recognized but not added as separate characters in the cast.
+
+**CAPTION** and **SFX** are formatting, not cast. They behave like character headings while you're typing — Return drops you onto a dialog line the same way — but they never enter the cast list or the autocomplete dropdown. Neither does a name written inside an off-page section: `BATMAN:` in a `#` note is a note, not a cast member.
 
 ComicDraft also teaches your system spell-checker the character names you add, so they stop getting red-underlined as misspellings.
 

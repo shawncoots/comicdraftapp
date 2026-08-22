@@ -11,8 +11,14 @@ description: Complete keyboard shortcut reference for all ComicDraft features.
 | ⇧⌘A | New Arc… |
 | ⇧⌘I | New Issue… |
 | ⇧⌘N | New Graphic Novel |
+| ⌘O | Open… (a document from outside the Library) |
+| ⌘S | Save |
+| ⌘W | Close (the open document, or the window) |
+| ⌘D | Duplicate |
 | ⌘P | Print |
 | ⇧⌘E | Export… |
+
+**Show in Finder** (macOS), **Share…** (iPad), and **Move to Library** live in the File menu without shortcuts. See [Working with Files](/guides/files/).
 
 ## View
 
