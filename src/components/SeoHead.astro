@@ -11,10 +11,10 @@ export type Props = {
   image?: string;
 };
 
-const { title, description, path, image } = Astro.props;
+const { title, description, path, image = '/og-image.png' } = Astro.props;
 const site = Astro.site!;
 const canonical = new URL(path, site).toString();
-const imageUrl = image && new URL(image, site).toString();
+const imageUrl = new URL(image, site).toString();
 ---
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,16 +29,12 @@ const imageUrl = image && new URL(image, site).toString();
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="ComicDraft" />
 <meta property="og:locale" content="en_US" />
-{imageUrl && (
-  <>
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-  </>
-)}
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <meta name="twitter:card" content="summary_large_image" />
-{imageUrl && <meta name="twitter:image" content={imageUrl} />}
+<meta name="twitter:image" content={imageUrl} />
 
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
