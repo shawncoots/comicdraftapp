@@ -39,6 +39,7 @@ export default defineConfig({
 				Sidebar: './src/components/Sidebar.astro',
 				Head: './src/components/Head.astro',
 			},
+			routeMiddleware: './src/starlightRouteData.ts',
 			customCss: [
 				'./src/styles/tokens.css',
 				'./src/styles/starlight.css',
