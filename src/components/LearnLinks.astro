@@ -1,0 +1,28 @@
+---
+/**
+ * "Keep learning" list for /learn/ articles: every other article in the
+ * library, in sidebar order. Drafts are left out of production builds, so
+ * articles only link to each other once both are published.
+ */
+import { getCollection } from 'astro:content';
+
+const currentId = Astro.locals.starlightRoute.entry.id;
+
+const articles = (
+  await getCollection(
+    'docs',
+    ({ id, data }) =>
+      id.startsWith('learn/') && id !== currentId && !(import.meta.env.PROD && data.draft),
+  )
+).sort((a, b) => (a.data.sidebar.order ?? Infinity) - (b.data.sidebar.order ?? Infinity));
+---
+
+{articles.length > 0 && (
+  <ul>
+    {articles.map((article) => (
+      <li>
+        <a href={`/${article.id}/`}>{article.data.title}</a>
+      </li>
+    ))}
+  </ul>
+)}

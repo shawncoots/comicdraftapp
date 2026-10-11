@@ -1,7 +1,35 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro';
 import GoogleAnalytics from './GoogleAnalytics.astro';
+
+// /learn/ articles get Article JSON-LD once they carry a datePublished.
+const { entry } = Astro.locals.starlightRoute;
+const { title, description, datePublished, dateModified } = entry.data;
+const article =
+  entry.id.startsWith('learn/') && datePublished
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description,
+        url: new URL(`/${entry.id}/`, Astro.site).toString(),
+        image: new URL('/og-image.png', Astro.site).toString(),
+        datePublished: datePublished.toISOString(),
+        dateModified: (dateModified ?? datePublished).toISOString(),
+        author: { '@type': 'Person', name: 'Shawn Coots', url: 'https://anti-villain.com' },
+        publisher: {
+          '@type': 'Organization',
+          '@id': 'https://anti-villain.com/#organization',
+          name: 'ANTI-VILLAIN',
+          url: 'https://anti-villain.com',
+          logo: 'https://anti-villain.com/logo/logo.png',
+        },
+      }
+    : undefined;
+// Escape "<" so content can never close the script tag early.
+const json = article && JSON.stringify(article).replace(/</g, '\\u003c');
 ---
 
 <Default />
 <GoogleAnalytics />
+{json && <script type="application/ld+json" set:html={json} />}

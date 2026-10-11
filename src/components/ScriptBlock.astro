@@ -1,0 +1,165 @@
+---
+/**
+ * Renders a comic script excerpt the way ComicDraft lays out a page:
+ * Courier Prime, bold underlined PAGE and PANEL headings with the panel
+ * description on the same line, and dialog indented under its heading.
+ *
+ * Pass the script as plain text, typed the way you would in the app:
+ *
+ *   PAGE-ONE
+ *
+ *   PANEL 1
+ *   Wide shot of the rooftop.
+ *
+ *   MARA:
+ *     (into radio)
+ *     He's here.
+ */
+export type Props = {
+  text: string;
+  caption?: string;
+};
+
+type Line =
+  | { kind: 'page'; label: string }
+  | { kind: 'panel'; label: string; body: string }
+  | { kind: 'heading'; label: string; body: string }
+  | { kind: 'dialog' | 'paren' | 'cont' | 'note' | 'action'; body: string };
+
+const { text, caption } = Astro.props;
+
+const rawLines = text.replace(/^\n+/, '').replace(/\s+$/, '').split('\n');
+const margin = Math.min(
+  ...rawLines.filter((l) => l.trim()).map((l) => l.match(/^ */)![0].length),
+);
+
+// Group lines into blocks separated by blank lines, classifying each line.
+const blocks: Line[][] = [];
+let block: Line[] = [];
+for (const raw of rawLines.map((l) => l.slice(margin))) {
+  const t = raw.trim();
+  if (!t) {
+    if (block.length) blocks.push(block);
+    block = [];
+    continue;
+  }
+  let m: RegExpMatchArray | null;
+  if (/^PAGE-/.test(t)) {
+    block.push({ kind: 'page', label: t });
+  } else if ((m = t.match(/^(PANEL \d+):?\s*(.*)$/))) {
+    block.push({ kind: 'panel', label: `${m[1]}:`, body: m[2] });
+  } else if (/^ {2,}/.test(raw)) {
+    block.push({ kind: /^\(.*\)$/.test(t) ? 'paren' : 'dialog', body: t });
+  } else if (t === '(CONT)') {
+    block.push({ kind: 'cont', body: t });
+  } else if (/^NOTE:/.test(t)) {
+    block.push({ kind: 'note', body: t });
+  } else if ((m = t.match(/^([A-Z][A-Z0-9 .'&-]*(?: \([^)]*\))?):\s*(.*)$/))) {
+    block.push({ kind: 'heading', label: `${m[1]}:`, body: m[2] });
+  } else {
+    block.push({ kind: 'action', body: t });
+  }
+}
+if (block.length) blocks.push(block);
+
+// A panel description written on the lines after PANEL N joins the heading,
+// matching the "Same line" panel description layout.
+for (const b of blocks) {
+  for (let i = 0; i < b.length - 1; i++) {
+    const line = b[i];
+    if (line.kind !== 'panel') continue;
+    while (b[i + 1]?.kind === 'action') {
+      const next = b.splice(i + 1, 1)[0] as { body: string };
+      line.body = line.body ? `${line.body} ${next.body}` : next.body;
+    }
+  }
+}
+---
+
+<figure class="script-block not-content">
+  <div class="script-page">
+    {blocks.map((b) => (
+      <div class="script-group">
+        {b.map((line) =>
+          line.kind === 'page' ? (
+            <p class="script-pagehead">{line.label}</p>
+          ) : line.kind === 'panel' || line.kind === 'heading' ? (
+            <p>
+              <span class:list={['script-label', { 'script-underline': line.kind === 'panel' }]}>
+                {line.label}
+              </span>
+              {line.body && ` ${line.body}`}
+            </p>
+          ) : (
+            <p class={`script-${line.kind}`}>{line.body}</p>
+          ),
+        )}
+      </div>
+    ))}
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .script-block {
+    margin: 1.5rem 0;
+  }
+  /* Always a white page, in light and dark mode, like the exported script. */
+  .script-page {
+    background: #ffffff;
+    color: #1c1c1e;
+    font-family: var(--font-script);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(28, 28, 30, 0.08);
+    overflow-x: auto;
+  }
+  .script-group + .script-group {
+    margin-top: 1rem;
+  }
+  .script-page p {
+    margin: 0;
+  }
+  .script-pagehead {
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+  .script-label {
+    font-weight: 700;
+  }
+  .script-underline {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+  .script-dialog,
+  .script-paren {
+    padding-inline-start: 3ch;
+  }
+  .script-paren {
+    font-style: italic;
+  }
+  .script-cont {
+    color: #6e6e73;
+  }
+  .script-note {
+    font-style: italic;
+    color: #6e6e73;
+  }
+  figcaption {
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  @media (max-width: 600px) {
+    .script-page {
+      padding: 1rem;
+      font-size: 0.8125rem;
+    }
+  }
+</style>
