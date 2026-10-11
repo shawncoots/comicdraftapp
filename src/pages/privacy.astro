@@ -3,6 +3,7 @@ import '../styles/tokens.css';
 import '../styles/site.css';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import SeoHead from '../components/SeoHead.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 
 const CONTACT_EMAIL = 'shawn@anti-villain.com';
@@ -11,12 +12,11 @@ const LAST_UPDATED = 'July 30, 2026';
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Comic Draft privacy policy — no accounts, no analytics SDKs, no third-party tracking. Your scripts stay in your own iCloud." />
-  <title>Comic Draft — Privacy Policy</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <SeoHead
+    title="Comic Draft — Privacy Policy"
+    description="Comic Draft privacy policy — no accounts, no analytics SDKs, no third-party tracking. Your scripts stay in your own iCloud."
+    path="/privacy/"
+  />
   <GoogleAnalytics />
 </head>
 <body>
