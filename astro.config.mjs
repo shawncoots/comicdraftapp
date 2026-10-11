@@ -61,6 +61,11 @@ export default defineConfig({
 						{ label: 'Cross-Platform Notes', slug: 'guides/cross-platform' },
 					],
 				},
+				{
+					label: 'Learn Comic Scripting',
+					// Ordered by each article's `sidebar.order` frontmatter.
+					items: [{ autogenerate: { directory: 'learn' } }],
+				},
 			],
 		}),
 	],

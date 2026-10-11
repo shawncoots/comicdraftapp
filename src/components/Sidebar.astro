@@ -8,7 +8,8 @@ const h2Headings = headings.filter((h) => h.depth === 2);
 
 <SidebarPersister>
   {sidebar.map((entry) =>
-    entry.type === 'group' && (
+    // Skip empty groups, e.g. one whose pages are all drafts in production.
+    entry.type === 'group' && entry.entries.length > 0 && (
       <div class="nav-group">
         <p class="nav-group-label">{entry.label}</p>
         <ul class="nav-list">
