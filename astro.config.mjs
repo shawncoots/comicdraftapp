@@ -26,6 +26,7 @@ export default defineConfig({
 			tableOfContents: false,
 			components: {
 				Sidebar: './src/components/Sidebar.astro',
+				Head: './src/components/Head.astro',
 			},
 			customCss: [
 				'./src/styles/tokens.css',
