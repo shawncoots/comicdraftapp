@@ -8,7 +8,7 @@ export default defineConfig({
 	site: 'https://comicdraft.app',
 	integrations: [
 		starlight({
-			title: 'Comic Draft',
+			title: 'ComicDraft',
 			// Starlight serves the logo as-is rather than running it through
 			// Astro's image pipeline, so point it at a pre-sized 96px webp
 			// instead of the full-resolution icon used by the marketing hero.
