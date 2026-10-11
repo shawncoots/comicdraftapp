@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import '../styles/tokens.css';
 import '../styles/site.css';
 import SiteNav from '../components/SiteNav.astro';
@@ -8,6 +8,15 @@ import SeoHead from '../components/SeoHead.astro';
 import StructuredData from '../components/StructuredData.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import appIcon from '../assets/appicon.png';
+import editorLibrary from '../assets/screenshots/editor-library.png';
+import formatPreview from '../assets/screenshots/format-preview.png';
+import outlineDark from '../assets/screenshots/outline-dark.png';
+import exportOptions from '../assets/screenshots/export-options.png';
+
+// Screenshots fill half of a 1200px grid on desktop and the full width
+// below 860px, so offer widths up to the 1800px source.
+const shotWidths = [600, 1200, 1800];
+const shotSizes = '(max-width: 860px) 100vw, 584px';
 ---
 <!doctype html>
 <html lang="en">
@@ -78,45 +87,53 @@ import appIcon from '../assets/appicon.png';
   <section class="screenshots">
     <div class="screenshots-grid">
       <figure class="screenshot-figure">
-        <img
-          src="/screenshots/editor-library.png"
+        <Picture
+          src={editorLibrary}
           alt="Comic Draft editor with the series library on the left, a formatted comic script in the centre, and the issue details inspector on the right"
           class="screenshot-img"
-          width="1800"
-          height="1170"
+          widths={shotWidths}
+          sizes={shotSizes}
+          formats={['avif']}
+          fallbackFormat="webp"
           loading="lazy"
         />
         <figcaption>Series, arcs, and issues on the left. Your script in the middle. Issue details on the right.</figcaption>
       </figure>
       <figure class="screenshot-figure">
-        <img
-          src="/screenshots/format-preview.png"
+        <Picture
+          src={formatPreview}
           alt="Comic Draft format preview showing a script rendered in Courier with font, layout, and dialog controls in the side panel"
           class="screenshot-img"
-          width="1800"
-          height="1170"
+          widths={shotWidths}
+          sizes={shotSizes}
+          formats={['avif']}
+          fallbackFormat="webp"
           loading="lazy"
         />
         <figcaption>Format preview — switch font, layout, and dialog casing and watch the page update live.</figcaption>
       </figure>
       <figure class="screenshot-figure">
-        <img
-          src="/screenshots/outline-dark.png"
+        <Picture
+          src={outlineDark}
           alt="Comic Draft in dark mode with the outline inspector open, showing four story beats each marked with a draft status"
           class="screenshot-img"
-          width="1800"
-          height="1170"
+          widths={shotWidths}
+          sizes={shotSizes}
+          formats={['avif']}
+          fallbackFormat="webp"
           loading="lazy"
         />
         <figcaption>Track your beats in the outline inspector. Dark mode included.</figcaption>
       </figure>
       <figure class="screenshot-figure">
-        <img
-          src="/screenshots/export-options.png"
+        <Picture
+          src={exportOptions}
           alt="Comic Draft export dialog offering PDF, Word, and plain text formats alongside font, layout, and header options"
           class="screenshot-img"
-          width="1800"
-          height="1170"
+          widths={shotWidths}
+          sizes={shotSizes}
+          formats={['avif']}
+          fallbackFormat="webp"
           loading="lazy"
         />
         <figcaption>Export to PDF, Word, or plain text — with the formatting your editor expects.</figcaption>
