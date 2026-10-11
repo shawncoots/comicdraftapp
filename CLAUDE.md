@@ -19,13 +19,13 @@ npm run astro -- --help  # Astro CLI help
 
 **Framework:** Astro 6 with the Starlight documentation/content theme (`@astrojs/starlight`).
 
-**Content:** All pages live in `src/content/docs/` as `.md` or `.mdx` files. Starlight auto-routes them based on filename. The frontmatter `title`, `description`, and `template` fields control how each page renders. The homepage (`index.mdx`) uses `template: splash` for a hero layout; remove that line to show the sidebar instead.
+**Content:** The guides live in `src/content/docs/` as `.md` or `.mdx` files. Starlight auto-routes them based on filename, and the frontmatter `title` and `description` fields control how each page renders. The homepage, contact, and privacy pages are standalone Astro pages in `src/pages/` (`index.astro`, `contact.astro`, `privacy.astro`) that share `SeoHead`, `SiteNav`, and `SiteFooter` from `src/components/`.
 
 **Config:** `astro.config.mjs` is the single source of truth for site title, sidebar structure, and social links. Sidebar nav items must be manually declared here or use `autogenerate` for a directory.
 
 **Design system:** The ComicDraft design system lives at `~/Desktop/DesignSystem/` — `colors_and_type.css` contains all CSS custom properties (colors, typography scale, spacing, radii, shadows). Fonts used: SF Mono (bundled OTFs in `DesignSystem/fonts/`) and Courier Prime (Google Fonts). The brand accent is `#0A84FF` (iOS system blue).
 
-**Hosting:** GitHub Pages. Branch: `main`. No CI/CD configured yet.
+**Hosting:** GitHub Pages. Branch: `main`. `.github/workflows/deploy.yml` builds and deploys on every push to `main` (or a manual run from the Actions tab).
 
 **Key design tokens:**
 - Accent: `#0A84FF` / hover `#0070E0`
