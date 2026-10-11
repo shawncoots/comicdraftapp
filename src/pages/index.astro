@@ -53,6 +53,7 @@ const shotSizes = '(max-width: 860px) 100vw, 584px';
       <a href="/guides/library" class="btn btn-primary">Learn how the app works</a>
       <a href="https://apps.apple.com/app/id6781109986" class="btn btn-ghost">Download on the App Store</a>
     </div>
+    <p class="hero-price">$19.99 one-time purchase. No subscription.</p>
   </section>
 
   <section class="features">
@@ -215,6 +216,41 @@ const shotSizes = '(max-width: 860px) 100vw, 584px';
     </div>
   </section>
 
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <h2 class="section-title">Questions</h2>
+
+      <div class="faq-item">
+        <h3>Does ComicDraft work on iPhone?</h3>
+        <p>
+          No. ComicDraft runs on Mac and iPad. A comic script page doesn't fit on
+          a phone screen, so there's no iPhone version.
+          <a href="/guides/cross-platform">Cross-platform notes →</a>
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I send scripts to my artist or letterer?</h3>
+        <p>
+          Yes. Export a PDF with a cover page, running headers, and page numbers
+          on Mac or iPad. On Mac you can also export an editable Word (.docx)
+          file, and plain text works on both.
+          <a href="/guides/preview-export">Preview &amp; export →</a>
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Where are my scripts stored?</h3>
+        <p>
+          In your own iCloud Drive by default, in a ComicDraft folder that syncs
+          between your Mac and iPad. You can keep them on the device instead.
+          There's no account, and we never see your scripts.
+          <a href="/guides/library#where-your-library-lives">Where your Library lives →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <SiteFooter />
 
 </body>
@@ -272,6 +308,12 @@ const shotSizes = '(max-width: 860px) 100vw, 584px';
     gap: var(--space-3);
     justify-content: center;
     flex-wrap: wrap;
+  }
+  .hero-price {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-wide);
+    margin-top: var(--space-4);
   }
 
   /* ── Features ── */
@@ -409,6 +451,36 @@ const shotSizes = '(max-width: 860px) 100vw, 584px';
     letter-spacing: var(--tracking-wide);
   }
 
+  /* ── FAQ ── */
+  .faq {
+    padding: var(--space-16) var(--space-8);
+    border-top: 1px solid var(--border);
+  }
+  .faq-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .faq .section-title { margin-bottom: var(--space-6); }
+  .faq-item {
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--border);
+  }
+  .faq-item h3 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+  }
+  .faq-item p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-loose);
+  }
+  .faq-item a {
+    color: var(--accent-text);
+    white-space: nowrap;
+  }
+
   /* ── Responsive ── */
   @media (max-width: 860px) {
     .screenshots-grid { grid-template-columns: 1fr; }
@@ -424,6 +496,7 @@ const shotSizes = '(max-width: 860px) 100vw, 584px';
     .hero-headline { font-size: var(--text-2xl); }
     .features { padding: var(--space-10) var(--space-4); }
     .why { padding: var(--space-10) var(--space-4); }
+    .faq { padding: var(--space-10) var(--space-4); }
     .section-title { font-size: var(--text-xl); }
     .screenshots { padding: var(--space-10) var(--space-4); }
   }
