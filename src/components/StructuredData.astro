@@ -1,0 +1,60 @@
+---
+/**
+ * Homepage JSON-LD: the app (SoftwareApplication), who makes it
+ * (Organization), and the site itself (WebSite).
+ */
+import { getImage } from 'astro:assets';
+import appIcon from '../assets/appicon.png';
+
+const site = Astro.site!;
+const abs = (path: string) => new URL(path, site).toString();
+const orgId = 'https://anti-villain.com/#organization';
+const websiteId = abs('/#website');
+
+const icon = await getImage({ src: appIcon, width: 512, height: 512, format: 'png' });
+
+const organization = {
+  '@type': 'Organization',
+  '@id': orgId,
+  name: 'ANTI-VILLAIN',
+  url: 'https://anti-villain.com',
+  logo: 'https://anti-villain.com/logo/logo.png',
+};
+
+const app = {
+  '@type': 'SoftwareApplication',
+  '@id': abs('/#app'),
+  name: 'ComicDraft',
+  alternateName: 'Comic Draft',
+  description:
+    'A comic script writing app for Mac and iPad. Formats pages, panels, dialog, captions and SFX as you type, auto-numbers pages and panels, and exports to PDF and Word.',
+  operatingSystem: 'macOS, iPadOS',
+  applicationCategory: 'ProductivityApplication',
+  url: abs('/'),
+  downloadUrl: 'https://apps.apple.com/app/id6781109986',
+  image: abs(icon.src),
+  offers: {
+    '@type': 'Offer',
+    price: '19.99',
+    priceCurrency: 'USD',
+    description: 'One-time purchase, no subscription.',
+  },
+  author: { '@id': orgId },
+  publisher: { '@id': orgId },
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': websiteId,
+  name: 'ComicDraft',
+  url: abs('/'),
+  inLanguage: 'en',
+  publisher: { '@id': orgId },
+};
+
+const graph = { '@context': 'https://schema.org', '@graph': [app, organization, website] };
+// Escape "<" so content can never close the script tag early.
+const json = JSON.stringify(graph).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />

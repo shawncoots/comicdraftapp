@@ -5,6 +5,7 @@ import '../styles/site.css';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SeoHead from '../components/SeoHead.astro';
+import StructuredData from '../components/StructuredData.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import appIcon from '../assets/appicon.png';
 ---
@@ -16,6 +17,7 @@ import appIcon from '../assets/appicon.png';
     description="Write comic book scripts on Mac & iPad. ComicDraft formats pages, panels, dialog and SFX as you type, auto-numbers everything, and exports to PDF and Word."
     path="/"
   />
+  <StructuredData />
   <GoogleAnalytics />
 </head>
 <body>
