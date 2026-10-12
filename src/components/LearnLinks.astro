@@ -1,6 +1,6 @@
 ---
 /**
- * "Keep learning" list for /learn/ articles: every other article in the
+ * "Keep learning" section for /learn/ articles: every other article in the
  * library, in sidebar order. Drafts are left out of production builds, so
  * articles only link to each other once both are published.
  */
@@ -17,7 +17,11 @@ const articles = (
 ).sort((a, b) => (a.data.sidebar.order ?? Infinity) - (b.data.sidebar.order ?? Infinity));
 ---
 
+{/* The heading lives here, not in each article, so it only appears once
+    there is another published article to list. */}
 {articles.length > 0 && (
+  <>
+  <h2 id="keep-learning">Keep learning</h2>
   <ul>
     {articles.map((article) => (
       <li>
@@ -25,4 +29,5 @@ const articles = (
       </li>
     ))}
   </ul>
+  </>
 )}
